@@ -1,0 +1,8 @@
+2020-08-31 01:19:54.163 [main] INFO  ua.com.epam.listener.GmailTestListeners - I am in onStart method selenium_hw_3
+2020-08-31 01:19:54.324 [main] INFO  ua.com.epam.factory.DriverFactory - try to create driver
+2020-08-31 01:20:09.606 [main] INFO  ua.com.epam.factory.DriverFactory - driver was successfully created
+2020-08-31 01:20:18.113 [main] INFO  ua.com.epam.listener.GmailTestListeners - I am in onTestStart method logInTpGmailAccountTestCase start
+2020-08-31 01:20:34.992 [main] INFO  ua.com.epam.listener.GmailTestListeners - I am in onTestSuccess method logInTpGmailAccountTestCase succeed
+2020-08-31 01:20:35.067 [main] INFO  ua.com.epam.factory.DriverFactory - try to quit driver
+2020-08-31 01:20:36.807 [main] INFO  ua.com.epam.factory.DriverFactory - driver was successfully closed
+2020-08-31 01:20:36.925 [main] INFO  ua.com.epam.listener.GmailTestListeners - I am in onFinish method selenium_hw_3

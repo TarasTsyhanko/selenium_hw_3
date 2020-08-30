@@ -24,4 +24,8 @@ public class ConfigProperties {
     public static int getSizeOfMarkMessages() {
         return Integer.parseInt(PropertyFile.getProperty("size_of_mark_messages"));
     }
+
+    public static String getLogsFilePath() {
+        return PropertyFile.getProperty("src/test/resources/logs/all.txt");
+    }
 }

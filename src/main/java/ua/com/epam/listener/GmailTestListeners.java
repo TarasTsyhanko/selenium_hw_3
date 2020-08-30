@@ -4,16 +4,10 @@ package ua.com.epam.listener;
 import io.qameta.allure.Attachment;
 
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import ua.com.epam.factory.DriverFactory;
-
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import ua.com.epam.utils.AllureAttachment;
 
 @Log4j2
 public class GmailTestListeners implements ITestListener {
@@ -44,18 +38,8 @@ public class GmailTestListeners implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        screen();
+        AllureAttachment.addScreenToAllure();
         log.info("saved screenshot");
-    }
-
-    @Attachment(value = "Page screenshot", type = "image/png")
-    private byte[] screen() {
-        return ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
-    }
-
-    @Attachment(value = "logs", type = "text/plain", fileExtension = ".log")
-    private static byte[] toByteArray(File file) throws IOException {
-        return Files.readAllBytes(Paths.get(file.getPath()));
     }
 
     @Override
