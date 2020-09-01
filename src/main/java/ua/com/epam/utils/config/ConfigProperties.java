@@ -21,11 +21,16 @@ public class ConfigProperties {
         return PropertyFile.getProperty("cookie_directory_path");
     }
 
+    public static String getLogsFilePath() {
+        return PropertyFile.getProperty("logs_file_path");
+    }
+
+    public static String getLetterFilePath() {
+        return PropertyFile.getProperty("letter_file_path");
+    }
+
     public static int getSizeOfMarkMessages() {
         return Integer.parseInt(PropertyFile.getProperty("size_of_mark_messages"));
     }
 
-    public static String getLogsFilePath() {
-        return PropertyFile.getProperty("src/test/resources/logs/all.txt");
-    }
 }

@@ -1,6 +1,5 @@
 package ua.com.epam.pages;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +8,15 @@ import ua.com.epam.factory.Wait;
 
 import java.util.List;
 
+import static ua.com.epam.utils.constant.LocatorConstants.*;
+
 public class GmailBasePage extends AbstractPage {
 
     @FindBy(css = "a.gb_D.gb_Ua.gb_i")
     private WebElement userIcon;
+
+    @FindBy(css = ".T-I.T-I-KE.L3")
+    private WebElement compose;
 
     @FindBy(css = "div.gb_ub.gb_vb")
     private WebElement userFullName;
@@ -25,6 +29,9 @@ public class GmailBasePage extends AbstractPage {
 
     @FindBy(xpath = "//*[text()='Позначити як важливе']")
     private WebElement markAsImportant;
+
+    @FindBy(css = ".pH.a9q")
+    private List<WebElement> markAsImportantCheckBoxList;
 
     @FindBy(xpath = "//*[@class='CJ' and contains(text(),'Більше')]")
     private WebElement extendMenuButton;
@@ -41,44 +48,53 @@ public class GmailBasePage extends AbstractPage {
     @FindBy(css = "span.bAq")
     private WebElement informMessage;
 
-    @Step("get user full name")
+    public void openLetterForm() {
+        compose.click();
+    }
+
     public String getUserFullName() {
         userIcon.click();
         return userFullName.getText();
     }
 
-    @Step("mark letters using checkbox")
-    public void markLetters(int size) {
-        Wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div.oZ-jc.T-Jo.J-J5-Ji")))
-                .stream().limit(size)
+    public void markNLetters(int n) {
+        Wait.until(ExpectedConditions
+                .presenceOfAllElementsLocatedBy(By.cssSelector(LIST_LETTERS_CHECKBOX_BY_CSS)))
+                .stream().limit(n)
                 .forEach(WebElement::click);
     }
 
-    @Step("move marked letters to important list")
     public void moveToImportant() {
         letterActionButton.click();
         markAsImportant.click();
     }
 
-    @Step("get text from inform message")
-    public String getMessageText() {
-        return Wait.until(ExpectedConditions.visibilityOf(informMessage)).getText();
+    public boolean isDisplayedMessage() {
+        return Wait.until(ExpectedConditions.visibilityOf(informMessage)).isDisplayed();
     }
 
-    @Step("open important letters list")
+    public boolean isTextPresentInMessage(String expectedText) {
+        return Wait.until(ExpectedConditions.textToBePresentInElement(informMessage, expectedText));
+    }
+
+
     public void openImportantLettersList() {
         extendMenuButton.click();
         importantLettersButton.click();
     }
 
-    @Step("mark all important letters using checkbox")
     public void markAllImportantLetters() {
-        Wait.until(ExpectedConditions.urlContains("imp"));
+        Wait.until(ExpectedConditions.urlContains(IMPORTANT_LIST_URL_CONTAINS));
         listMassagesCheckBox.stream().filter(WebElement::isDisplayed).forEach(WebElement::click);
     }
 
-    @Step("delete important letters")
-    public void deleteImportantLetters() {
+    public void moveFromImportant() {
+       Wait.until(ExpectedConditions
+               .presenceOfAllElementsLocatedBy(By.cssSelector(IMPORTANT_LETTERS_CHECKBOX_BY_CSS)))
+               .forEach(WebElement::click);
+    }
+
+    public void deleteMarkedLetters() {
         deleteAction.click();
     }
 

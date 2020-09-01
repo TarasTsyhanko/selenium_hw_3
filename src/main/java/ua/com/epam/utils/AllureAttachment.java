@@ -3,7 +3,7 @@ package ua.com.epam.utils;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import ua.com.epam.factory.DriverFactory;
+import ua.com.epam.factory.DriverProvider;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +19,6 @@ public class AllureAttachment {
 
     @Attachment(value = "Page screenshot", type = "image/png")
     public static byte[] addScreenToAllure() {
-        return ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) DriverProvider.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }

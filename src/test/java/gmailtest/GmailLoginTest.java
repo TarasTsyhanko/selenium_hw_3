@@ -2,24 +2,21 @@ package gmailtest;
 
 import com.google.inject.Inject;
 import org.testng.annotations.Test;
-import ua.com.epam.pages.GmailBasePage;
-import ua.com.epam.pages.GmailLoginPage;
+import ua.com.epam.businesslayer.LoginAction;
 import ua.com.epam.utils.entity.User;
-import ua.com.epam.utils.readers.UserFileManager;
-import ua.com.epam.validators.LoginValidator;
+import ua.com.epam.utils.readers.FileManager;
+import ua.com.epam.validators.LoginAsserter;
 
 public class GmailLoginTest extends BaseTest {
     @Inject
-    private LoginValidator loginValidator;
+    private LoginAction loginAction;
+    @Inject
+    private LoginAsserter loginAsserter;
 
     @Test(description = "log in to gmail account")
     public void logInTpGmailAccountTestCase() {
-        User user = UserFileManager.readFile().get(0);
-        GmailLoginPage loginPage = new GmailLoginPage();
-        loginPage.inputLoginAndClickNext(user.getLogin());
-        GmailBasePage basePage = loginPage.inputPasswordAndClickNext(user.getPassword());
-        String actualUserName = basePage.getUserFullName();
-        loginValidator.verifyIsUserNameCorrect(actualUserName, user.getFullName());
-
+        User user = FileManager.getUsers().get(0);
+        loginAction.logInToGmailAccount(user.getLogin(), user.getPassword());
+        loginAsserter.verifyIsUserNameCorrect(loginAction.getUserFullName(), user.getFullName());
     }
 }
