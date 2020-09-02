@@ -1,8 +1,14 @@
-2020-09-02 14:46:44.310 [main] INFO  ua.com.epam.factory.DriverFactory - try to create driver chrome
-2020-09-02 14:46:52.839 [main] INFO  ua.com.epam.factory.DriverFactory - chrome driver was successfully created
-2020-09-02 14:46:53.141 [main] INFO  ua.com.epam.listener.GmailTestListeners - I am in onStart method selenium_hw_3
-2020-09-02 14:47:23.896 [main] INFO  ua.com.epam.listener.GmailTestListeners - I am in onTestStart method markMessagesLikeImportant start
-2020-09-02 14:47:29.333 [main] INFO  ua.com.epam.listener.GmailTestListeners - I am in onTestSuccess method markMessagesLikeImportant succeed
-2020-09-02 14:47:29.353 [main] INFO  ua.com.epam.factory.DriverProvider - try to quit driver
-2020-09-02 14:47:30.756 [main] INFO  ua.com.epam.factory.DriverProvider - driver was successfully closed
-2020-09-02 14:47:30.825 [main] INFO  ua.com.epam.listener.GmailTestListeners - I am in onFinish method selenium_hw_3
+2020-09-03 01:47:58 [INFO ] GmailTestListeners:21 - I am in onStart method Gmail
+2020-09-03 01:47:59 [INFO ] DriverFactory:18 - try to create driver chrome
+2020-09-03 01:48:13 [INFO ] DriverFactory:31 - chrome driver was successfully created
+2020-09-03 01:48:16 [INFO ] GmailTestListeners:31 - I am in onTestStart method logInTpGmailAccountTestCase start
+2020-09-03 01:48:31 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method logInTpGmailAccountTestCase succeed
+2020-09-03 01:48:31 [INFO ] DriverContainer:24 - try to quit driver
+2020-09-03 01:48:32 [INFO ] DriverContainer:29 - driver was successfully closed
+2020-09-03 01:48:32 [INFO ] DriverFactory:18 - try to create driver chrome
+2020-09-03 01:48:38 [INFO ] DriverFactory:31 - chrome driver was successfully created
+2020-09-03 01:49:01 [INFO ] GmailTestListeners:31 - I am in onTestStart method markMessagesLikeImportant start
+2020-09-03 01:49:06 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method markMessagesLikeImportant succeed
+2020-09-03 01:49:06 [INFO ] DriverContainer:24 - try to quit driver
+2020-09-03 01:49:07 [INFO ] DriverContainer:29 - driver was successfully closed
+2020-09-03 01:49:07 [INFO ] GmailTestListeners:26 - I am in onFinish method Gmail

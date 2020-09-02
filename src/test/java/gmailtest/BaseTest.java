@@ -4,7 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Guice;
 import org.testng.annotations.Listeners;
-import ua.com.epam.factory.DriverProvider;
+import ua.com.epam.factory.DriverContainer;
 import ua.com.epam.listener.GmailTestListeners;
 import ua.com.epam.modules.ActionModule;
 import ua.com.epam.modules.AsserterModule;
@@ -20,12 +20,12 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        DriverProvider.getDriver().get(ConfigProperties.getBaseUrl());
+        DriverContainer.getDriver().get(ConfigProperties.getBaseUrl());
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws IOException {
-        DriverProvider.quitDriver();
+        DriverContainer.quitDriver();
         AllureAttachment.addFileToAllure(ConfigProperties.getLogsFilePath());
     }
 }

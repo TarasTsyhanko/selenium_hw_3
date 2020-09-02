@@ -1,9 +1,9 @@
-package ua.com.epam.businesslayer;
+package ua.com.epam.layers.businesslayer;
 
 import com.google.inject.Inject;
 import io.qameta.allure.Step;
-import ua.com.epam.pages.CreateMessagePage;
-import ua.com.epam.pages.GmailBasePage;
+import ua.com.epam.layers.pages.CreateMessagePage;
+import ua.com.epam.layers.pages.GmailBasePage;
 import ua.com.epam.utils.entity.Letter;
 
 public class CreateLetterAction {

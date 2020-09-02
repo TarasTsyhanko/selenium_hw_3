@@ -1,27 +1,27 @@
-package ua.com.epam.pages;
+package ua.com.epam.layers.pages;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ua.com.epam.factory.Wait;
+import ua.com.epam.layers.elements.elementimpl.ButtonElement;
+import ua.com.epam.layers.elements.elementimpl.InputElement;
 
 
 public class CreateMessagePage extends AbstractPage {
 
     @FindBy(name = "to")
-    private WebElement recipientsInput;
+    private InputElement recipientsInput;
 
     @FindBy(name = "subjectbox")
-    private WebElement subjectInput;
+    private InputElement subjectInput;
 
     @FindBy(css = ".Ar.Au .editable")
-    private WebElement massageInput;
+    private InputElement massageInput;
 
     @FindBy(css = "div.dC")
-    private WebElement sendMassageButton;
+    private ButtonElement sendMassageButton;
 
 
     public void writeRecipient(String recipients) {
-        Wait.forVisible(recipientsInput).sendKeys(recipients);
+       recipientsInput.waitUntilVisible().sendKeys(recipients);
     }
 
     public void writeSubject(String subject) {

@@ -1,72 +1,72 @@
-package ua.com.epam.pages;
+package ua.com.epam.layers.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ua.com.epam.layers.elements.PageElementCollection;
+import ua.com.epam.layers.elements.elementimpl.ButtonElement;
+import ua.com.epam.layers.elements.elementimpl.CheckBoxElement;
+import ua.com.epam.layers.elements.elementimpl.LabelElement;
 import ua.com.epam.factory.Wait;
 
-import java.util.List;
 
 import static ua.com.epam.utils.constant.LocatorConstants.*;
 
 public class GmailBasePage extends AbstractPage {
 
     @FindBy(css = "a.gb_D.gb_Ua.gb_i")
-    private WebElement userIcon;
+    private ButtonElement userIcon;
 
     @FindBy(css = ".T-I.T-I-KE.L3")
-    private WebElement compose;
+    private ButtonElement compose;
 
     @FindBy(css = "div.gb_ub.gb_vb")
-    private WebElement userFullName;
+    private LabelElement userFullName;
 
     @FindBy(css = "div.oZ-jc.T-Jo.J-J5-Ji")
-    private List<WebElement> listMassagesCheckBox;
+    private PageElementCollection<CheckBoxElement> listMassagesCheckBox;
 
     @FindBy(css = "span.asa.bjy")
-    private WebElement letterActionButton;
+    private ButtonElement letterActionButton;
 
     @FindBy(xpath = "//*[text()='Позначити як важливе']")
-    private WebElement markAsImportant;
+    private ButtonElement markAsImportant;
 
     @FindBy(xpath = "//*[text()='Позначити як неважливе']")
-    private WebElement markAsNOTImportant;
+    private ButtonElement markAsNOTImportant;
 
     @FindBy(css = ".pH.a9q")
-    private List<WebElement> markAsImportantCheckBoxList;
+    private PageElementCollection<CheckBoxElement> markAsImportantCheckBoxList;
 
     @FindBy(css = ".n6 .CJ")
-    private WebElement extendMenuButton;
+    private ButtonElement extendMenuButton;
 
     @FindBy(css = ".TN.bzz.aHS-bns .J-Ke.n0")
-    private WebElement importantLettersButton;
+    private ButtonElement importantLettersButton;
 
     @FindBy(css = "span.T-Jo.J-J5-Ji")
-    private WebElement markAllLetters;
+    private CheckBoxElement markAllLetters;
 
     @FindBy(xpath = "//div[@role='main']//*[@class='oZ-jc T-Jo J-J5-Ji T-Jo-Jp']")
-    private List<WebElement> importantLettersCheckBox;
+    private PageElementCollection<CheckBoxElement> importantLettersCheckBox;
 
     @FindBy(xpath = "//* [@gh='tm']//*[@class='T-I J-J5-Ji nX T-I-ax7 T-I-Js-Gs mA']")
-    private WebElement deleteAction;
+    private ButtonElement deleteAction;
 
     @FindBy(css = "span.bAq")
-    private WebElement informMessage;
+    private LabelElement informMessage;
 
     public void openLetterForm() {
         compose.click();
     }
 
     public String getUserFullName() {
-        Wait.forClickable(userIcon).click();
+        userIcon.waitUntilClickable().click();
         return userFullName.getText();
     }
 
     public void markNLetters(int n) {
         Wait.untilPageToBeLoaded();
-        Wait.forPresentAll(By.cssSelector(LIST_LETTERS_CHECKBOX_BY_CSS))
-                .stream().limit(n)
-                .forEach(WebElement::click);
+        listMassagesCheckBox.getWithLimit(n)
+                .forEach(CheckBoxElement::scriptClick);
     }
 
     public void moveToImportant() {
@@ -75,12 +75,11 @@ public class GmailBasePage extends AbstractPage {
     }
 
     public boolean isDisplayedMessage() {
-        return Wait.forPresent(By.cssSelector(INFORM_MESSAGE_BY_CSS))
-                .isDisplayed();
+        return informMessage.waitUntilPresent().isDisplayed();
     }
 
     public boolean isTextPresentInMessage(String expectedText) {
-        return Wait.forTextPresent(informMessage, expectedText);
+        return informMessage.waitUntilTextPresent(expectedText);
     }
 
 
@@ -91,8 +90,10 @@ public class GmailBasePage extends AbstractPage {
 
     public void markAllImportantLetters() {
         Wait.forUrlContains(IMPORTANT_LIST_URL_CONTAINS);
-        Wait.forPresentAll(By.cssSelector(LIST_LETTERS_CHECKBOX_BY_CSS))
-                .stream().filter(WebElement::isDisplayed).forEach(WebElement::click);
+        listMassagesCheckBox
+                .stream()
+                .filter(CheckBoxElement::isDisplayed)
+                .forEach(CheckBoxElement::scriptClick);
     }
 
     public void moveFromImportant() {

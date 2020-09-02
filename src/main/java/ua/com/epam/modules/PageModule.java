@@ -1,9 +1,9 @@
 package ua.com.epam.modules;
 
 import com.google.inject.AbstractModule;
-import ua.com.epam.pages.CreateMessagePage;
-import ua.com.epam.pages.GmailBasePage;
-import ua.com.epam.pages.GmailLoginPage;
+import ua.com.epam.layers.pages.CreateMessagePage;
+import ua.com.epam.layers.pages.GmailBasePage;
+import ua.com.epam.layers.pages.GmailLoginPage;
 
 public class PageModule extends AbstractModule {
     @Override

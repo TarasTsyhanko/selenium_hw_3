@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 @Log4j2
 public class DriverFactory {
-    public static final int IMPLICITLY_WAIT = 20;
+    public static final int IMPLICITLY_TIME = 20;
 
     protected static WebDriver createDriver(String browser) {
         WebDriver driver;
@@ -26,7 +26,7 @@ public class DriverFactory {
             System.setProperty(ConfigProperties.getChromeDriver(), ConfigProperties.getChromeDriverPath());
             driver = new ChromeDriver();
         }
-        setWait(driver, IMPLICITLY_WAIT);
+        setWait(driver, IMPLICITLY_TIME);
         driver.manage().window().maximize();
         log.info(browser + " driver was successfully created");
         return driver;

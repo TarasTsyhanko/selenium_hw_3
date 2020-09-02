@@ -2,7 +2,7 @@ package gmailtest;
 
 import com.google.inject.Inject;
 import org.testng.annotations.Test;
-import ua.com.epam.businesslayer.LoginAction;
+import ua.com.epam.layers.businesslayer.LoginAction;
 import ua.com.epam.utils.entity.User;
 import ua.com.epam.utils.readers.FileManager;
 import ua.com.epam.validators.LoginAsserter;

@@ -1,9 +1,9 @@
-package ua.com.epam.businesslayer;
+package ua.com.epam.layers.businesslayer;
 
 import com.google.inject.Inject;
 import io.qameta.allure.Step;
-import ua.com.epam.factory.DriverProvider;
-import ua.com.epam.pages.GmailBasePage;
+import ua.com.epam.factory.DriverContainer;
+import ua.com.epam.layers.pages.GmailBasePage;
 import ua.com.epam.utils.entity.User;
 
 public class CommonAction {
@@ -12,7 +12,7 @@ public class CommonAction {
 
     @Step("set cookies to webDriver")
     public void setCookies(User user){
-        user.getCookies().forEach(cookie -> DriverProvider.getDriver().manage().addCookie(cookie));
+        user.getCookies().forEach(cookie -> DriverContainer.getDriver().manage().addCookie(cookie));
     }
 
     @Step("is message displayed")
