@@ -2,7 +2,6 @@ package ua.com.epam.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import ua.com.epam.factory.Wait;
 
 
@@ -22,7 +21,7 @@ public class CreateMessagePage extends AbstractPage {
 
 
     public void writeRecipient(String recipients) {
-        Wait.until(ExpectedConditions.visibilityOf(recipientsInput)).sendKeys(recipients);
+        Wait.forVisible(recipientsInput).sendKeys(recipients);
     }
 
     public void writeSubject(String subject) {

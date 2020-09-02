@@ -19,7 +19,7 @@ public class GmailLoginPage extends AbstractPage {
     }
 
     public void inputPasswordAndClickNext(String password) {
-        Wait.until(ExpectedConditions.visibilityOf(passwordInput)).sendKeys(password);
+        Wait.forVisible(passwordInput).sendKeys(password);
         nextButton.click();
     }
 }

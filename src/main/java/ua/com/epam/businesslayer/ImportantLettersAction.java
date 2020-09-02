@@ -25,7 +25,7 @@ public class ImportantLettersAction {
         basePage.deleteMarkedLetters();
     }
     @Step("move all letters from important list")
-    public void moveFromImportant(){
+    public void moveAllLettersFromImportant(){
         basePage.moveFromImportant();
     }
 }

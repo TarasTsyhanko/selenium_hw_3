@@ -5,12 +5,33 @@ public class ConfigProperties {
         return PropertyFile.getProperty("base_url");
     }
 
-    public static String getDriverPath() {
-        return PropertyFile.getProperty("driver_path");
+    public static String getBrowser() {
+        return PropertyFile.getProperty("browser");
     }
+
+    public static String getChromeDriverPath() {
+        return PropertyFile.getProperty("chrome_driver_path");
+    }
+
+    public static String getFirefoxDriverPath() {
+        return PropertyFile.getProperty("firefox_driver_path");
+    }
+
+    public static String getEdgeDriverPath() {
+        return PropertyFile.getProperty("edge_driver_path");
+    }
+
 
     public static String getChromeDriver() {
         return PropertyFile.getProperty("chrome_driver");
+    }
+
+    public static String getFirefoxDriver() {
+        return PropertyFile.getProperty("firefox_driver");
+    }
+
+    public static String getEdgeDriver() {
+        return PropertyFile.getProperty("edge_driver");
     }
 
     public static String getUsersFilePath() {

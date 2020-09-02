@@ -3,6 +3,8 @@ package ua.com.epam.factory;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import ua.com.epam.utils.config.ConfigProperties;
 
 import java.util.concurrent.TimeUnit;
@@ -11,13 +13,22 @@ import java.util.concurrent.TimeUnit;
 public class DriverFactory {
     public static final int IMPLICITLY_WAIT = 20;
 
-    protected static WebDriver createDriver() {
-        log.info("try to create driver");
-        System.setProperty(ConfigProperties.getChromeDriver(), ConfigProperties.getDriverPath());
-        WebDriver driver = new ChromeDriver();
+    protected static WebDriver createDriver(String browser) {
+        WebDriver driver;
+        log.info("try to create driver " + browser);
+        if (browser.equals("firefox")) {
+            System.setProperty(ConfigProperties.getFirefoxDriver(), ConfigProperties.getFirefoxDriverPath());
+            driver = new FirefoxDriver();
+        } else if (browser.equals("edge")) {
+            System.setProperty(ConfigProperties.getEdgeDriver(), ConfigProperties.getEdgeDriverPath());
+            driver = new EdgeDriver();
+        } else {
+            System.setProperty(ConfigProperties.getChromeDriver(), ConfigProperties.getChromeDriverPath());
+            driver = new ChromeDriver();
+        }
         setWait(driver, IMPLICITLY_WAIT);
         driver.manage().window().maximize();
-        log.info("driver was successfully created");
+        log.info(browser + " driver was successfully created");
         return driver;
     }
 

@@ -3,7 +3,6 @@ package ua.com.epam.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import ua.com.epam.factory.Wait;
 
 import java.util.List;
@@ -30,14 +29,20 @@ public class GmailBasePage extends AbstractPage {
     @FindBy(xpath = "//*[text()='Позначити як важливе']")
     private WebElement markAsImportant;
 
+    @FindBy(xpath = "//*[text()='Позначити як неважливе']")
+    private WebElement markAsNOTImportant;
+
     @FindBy(css = ".pH.a9q")
     private List<WebElement> markAsImportantCheckBoxList;
 
-    @FindBy(xpath = "//*[@class='CJ' and contains(text(),'Більше')]")
+    @FindBy(css = ".n6 .CJ")
     private WebElement extendMenuButton;
 
-    @FindBy(xpath = "//a[text()='Важливі']")
+    @FindBy(css = ".TN.bzz.aHS-bns .J-Ke.n0")
     private WebElement importantLettersButton;
+
+    @FindBy(css = "span.T-Jo.J-J5-Ji")
+    private WebElement markAllLetters;
 
     @FindBy(xpath = "//div[@role='main']//*[@class='oZ-jc T-Jo J-J5-Ji T-Jo-Jp']")
     private List<WebElement> importantLettersCheckBox;
@@ -53,13 +58,13 @@ public class GmailBasePage extends AbstractPage {
     }
 
     public String getUserFullName() {
-        userIcon.click();
+        Wait.forClickable(userIcon).click();
         return userFullName.getText();
     }
 
     public void markNLetters(int n) {
-        Wait.until(ExpectedConditions
-                .presenceOfAllElementsLocatedBy(By.cssSelector(LIST_LETTERS_CHECKBOX_BY_CSS)))
+        Wait.untilPageToBeLoaded();
+        Wait.forPresentAll(By.cssSelector(LIST_LETTERS_CHECKBOX_BY_CSS))
                 .stream().limit(n)
                 .forEach(WebElement::click);
     }
@@ -70,11 +75,12 @@ public class GmailBasePage extends AbstractPage {
     }
 
     public boolean isDisplayedMessage() {
-        return Wait.until(ExpectedConditions.visibilityOf(informMessage)).isDisplayed();
+        return Wait.forPresent(By.cssSelector(INFORM_MESSAGE_BY_CSS))
+                .isDisplayed();
     }
 
     public boolean isTextPresentInMessage(String expectedText) {
-        return Wait.until(ExpectedConditions.textToBePresentInElement(informMessage, expectedText));
+        return Wait.forTextPresent(informMessage, expectedText);
     }
 
 
@@ -84,14 +90,16 @@ public class GmailBasePage extends AbstractPage {
     }
 
     public void markAllImportantLetters() {
-        Wait.until(ExpectedConditions.urlContains(IMPORTANT_LIST_URL_CONTAINS));
-        listMassagesCheckBox.stream().filter(WebElement::isDisplayed).forEach(WebElement::click);
+        Wait.forUrlContains(IMPORTANT_LIST_URL_CONTAINS);
+        Wait.forPresentAll(By.cssSelector(LIST_LETTERS_CHECKBOX_BY_CSS))
+                .stream().filter(WebElement::isDisplayed).forEach(WebElement::click);
     }
 
     public void moveFromImportant() {
-       Wait.until(ExpectedConditions
-               .presenceOfAllElementsLocatedBy(By.cssSelector(IMPORTANT_LETTERS_CHECKBOX_BY_CSS)))
-               .forEach(WebElement::click);
+       markAllLetters.click();
+       letterActionButton.click();
+       markAsNOTImportant.click();
+       markAllLetters.click();
     }
 
     public void deleteMarkedLetters() {

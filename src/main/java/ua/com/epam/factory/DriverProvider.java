@@ -15,7 +15,7 @@ public class DriverProvider {
 
     public static WebDriver getDriver() {
         if (DRIVER == null) {
-           DRIVER = DriverFactory.createDriver();
+           DRIVER = DriverFactory.createDriver(ConfigProperties.getBrowser());
         }
         return DRIVER;
     }
