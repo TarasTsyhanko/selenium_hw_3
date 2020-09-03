@@ -17,12 +17,12 @@ public class ButtonElement extends PageElement {
     }
 
     public void click() {
-        getWebElement().click();
+        refreshElement().click();
     }
 
     public void actionClick() {
         Actions action = new Actions(DriverContainer.getDriver());
-        action.click(getWebElement()).build().perform();
+        action.click(refreshElement()).build().perform();
     }
 
     public void scriptClick() {

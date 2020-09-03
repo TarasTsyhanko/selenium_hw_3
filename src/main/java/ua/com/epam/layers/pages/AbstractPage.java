@@ -1,7 +1,7 @@
 package ua.com.epam.layers.pages;
 
 import org.openqa.selenium.support.PageFactory;
-import ua.com.epam.custumpagefactory.PageElementDecorator;
+import ua.com.epam.pagefactory.PageElementDecorator;
 import ua.com.epam.factory.DriverContainer;
 
 public class AbstractPage {

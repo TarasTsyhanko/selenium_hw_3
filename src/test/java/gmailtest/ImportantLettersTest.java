@@ -5,9 +5,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ua.com.epam.layers.businesslayer.CommonAction;
-import ua.com.epam.layers.businesslayer.CreateLetterAction;
 import ua.com.epam.layers.businesslayer.ImportantLettersAction;
 import ua.com.epam.factory.DriverContainer;
+import ua.com.epam.utils.entity.User;
 import ua.com.epam.utils.readers.FileManager;
 import ua.com.epam.utils.config.ConfigProperties;
 
@@ -17,21 +17,17 @@ public class ImportantLettersTest extends BaseTest {
     @Inject
     private ImportantLettersAction importantListAction;
     @Inject
-    private CreateLetterAction createLetterAction;
-    @Inject
     private CommonAction commonAction;
 
     @BeforeMethod
     public void setCookies() {
-        commonAction.setCookies(FileManager.getUsers().get(0));
+        User testUser = FileManager.getUsers().get(0);
+        FileManager.getLetters().forEach(letter -> {
+            letter.setRecipient(testUser.getLogin());
+            commonAction.setTestLetter(letter);
+        });
+        commonAction.setCookies(testUser);
         DriverContainer.getDriver().navigate().to(ConfigProperties.getBaseUrl());
-
-      FileManager.getLetters().stream().limit(ConfigProperties.getSizeOfMarkMessages()).forEach(letter -> {
-          createLetterAction.createAndSendLetter(letter);
-          Assert.assertTrue(commonAction.isTextPresentInMessage(SUCCESSFUL_SENDING_MESSAGE));
-      });
-      importantListAction.moveAllLettersFromImportant();
-
     }
 
     @Test(description = "mark messages like important and delete it ")

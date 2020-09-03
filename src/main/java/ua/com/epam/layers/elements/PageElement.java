@@ -18,7 +18,7 @@ public abstract class PageElement {
         this.locator = by;
     }
 
-    protected WebElement getWebElement() {
+    protected WebElement refreshElement() {
         if (isSingle) {
             return DriverContainer.getDriver().findElement(locator);
         }
@@ -30,50 +30,50 @@ public abstract class PageElement {
     }
 
     public String getAttribute(String atr) {
-        return getWebElement().getAttribute(atr);
+        return refreshElement().getAttribute(atr);
     }
 
     public boolean isDisplayed() {
-        try {
-            return getWebElement().isDisplayed();
-        } catch (StaleElementReferenceException e) {
-            return false;
-        }
+        return refreshElement().isDisplayed();
     }
 
     public PageElement scrollToElement() {
         ((JavascriptExecutor) DriverContainer.getDriver())
-                .executeScript(SCRIPT_SCROLL_TO_ELEMENT, getWebElement());
+                .executeScript(SCRIPT_SCROLL_TO_ELEMENT, refreshElement());
         return this;
     }
 
+    public boolean waitUntilStalenessOf() {
+        return Wait.until(ExpectedConditions.stalenessOf(webElement));
+    }
+
     public String getText() {
-        return getWebElement().getText();
+        return refreshElement().getText();
     }
 
     public String getTagName() {
-        return getWebElement().getTagName();
+        return refreshElement().getTagName();
     }
 
     public boolean isEnabled() {
-        return getWebElement().isEnabled();
+        return refreshElement().isEnabled();
     }
 
     public Point getLocation() {
-        return getWebElement().getLocation();
+        return refreshElement().getLocation();
     }
 
     public Dimension getSize() {
-        return getWebElement().getSize();
+        return refreshElement().getSize();
     }
 
     public Rectangle getRect() {
-        return getWebElement().getRect();
+        return refreshElement().getRect();
     }
 
 
     public String getCssValue(String s) {
-        return getWebElement().getCssValue(s);
+        return refreshElement().getCssValue(s);
     }
 
     public <T extends PageElement> PageElement waitUntilVisible() {

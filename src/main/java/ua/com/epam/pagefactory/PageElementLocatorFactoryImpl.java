@@ -1,4 +1,4 @@
-package ua.com.epam.custumpagefactory;
+package ua.com.epam.pagefactory;
 
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;

@@ -9,12 +9,12 @@ public class CheckBoxElement extends ButtonElement {
     }
 
     public void setCheck(boolean value) {
-        while (value != isSelected()) {
-            getWebElement().click();
+        if (value != isSelected()) {
+            actionClick();
         }
     }
 
     public boolean isSelected() {
-        return getWebElement().isSelected();
+        return refreshElement().isSelected();
     }
 }

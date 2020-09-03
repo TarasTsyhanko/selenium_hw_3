@@ -1,14 +1,14 @@
-2020-09-03 01:47:58 [INFO ] GmailTestListeners:21 - I am in onStart method Gmail
-2020-09-03 01:47:59 [INFO ] DriverFactory:18 - try to create driver chrome
-2020-09-03 01:48:13 [INFO ] DriverFactory:31 - chrome driver was successfully created
-2020-09-03 01:48:16 [INFO ] GmailTestListeners:31 - I am in onTestStart method logInTpGmailAccountTestCase start
-2020-09-03 01:48:31 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method logInTpGmailAccountTestCase succeed
-2020-09-03 01:48:31 [INFO ] DriverContainer:24 - try to quit driver
-2020-09-03 01:48:32 [INFO ] DriverContainer:29 - driver was successfully closed
-2020-09-03 01:48:32 [INFO ] DriverFactory:18 - try to create driver chrome
-2020-09-03 01:48:38 [INFO ] DriverFactory:31 - chrome driver was successfully created
-2020-09-03 01:49:01 [INFO ] GmailTestListeners:31 - I am in onTestStart method markMessagesLikeImportant start
-2020-09-03 01:49:06 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method markMessagesLikeImportant succeed
-2020-09-03 01:49:06 [INFO ] DriverContainer:24 - try to quit driver
-2020-09-03 01:49:07 [INFO ] DriverContainer:29 - driver was successfully closed
-2020-09-03 01:49:07 [INFO ] GmailTestListeners:26 - I am in onFinish method Gmail
+2020-09-03 21:32:41 [INFO ] GmailTestListeners:21 - I am in onStart method Gmail
+2020-09-03 21:32:41 [INFO ] DriverFactory:18 - try to create driver chrome
+2020-09-03 21:32:49 [INFO ] DriverFactory:31 - chrome driver was successfully created
+2020-09-03 21:32:51 [INFO ] GmailTestListeners:31 - I am in onTestStart method logInTpGmailAccountTestCase start
+2020-09-03 21:33:06 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method logInTpGmailAccountTestCase succeed
+2020-09-03 21:33:06 [INFO ] DriverContainer:24 - try to quit driver
+2020-09-03 21:33:07 [INFO ] DriverContainer:29 - driver was successfully closed
+2020-09-03 21:33:07 [INFO ] DriverFactory:18 - try to create driver chrome
+2020-09-03 21:33:12 [INFO ] DriverFactory:31 - chrome driver was successfully created
+2020-09-03 21:33:23 [INFO ] GmailTestListeners:31 - I am in onTestStart method markMessagesLikeImportant start
+2020-09-03 21:33:32 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method markMessagesLikeImportant succeed
+2020-09-03 21:33:32 [INFO ] DriverContainer:24 - try to quit driver
+2020-09-03 21:33:32 [INFO ] DriverContainer:29 - driver was successfully closed
+2020-09-03 21:33:32 [INFO ] GmailTestListeners:26 - I am in onFinish method Gmail

@@ -64,9 +64,8 @@ public class GmailBasePage extends AbstractPage {
     }
 
     public void markNLetters(int n) {
-        Wait.untilPageToBeLoaded();
         listMassagesCheckBox.getWithLimit(n)
-                .forEach(CheckBoxElement::scriptClick);
+                .forEach(checkBox->checkBox.setCheck(true));
     }
 
     public void moveToImportant() {
@@ -75,7 +74,7 @@ public class GmailBasePage extends AbstractPage {
     }
 
     public boolean isDisplayedMessage() {
-        return informMessage.waitUntilPresent().isDisplayed();
+        return informMessage.waitUntilVisible().isDisplayed();
     }
 
     public boolean isTextPresentInMessage(String expectedText) {
@@ -90,10 +89,10 @@ public class GmailBasePage extends AbstractPage {
 
     public void markAllImportantLetters() {
         Wait.forUrlContains(IMPORTANT_LIST_URL_CONTAINS);
-        listMassagesCheckBox
+        listMassagesCheckBox.waitUntilPresent()
                 .stream()
                 .filter(CheckBoxElement::isDisplayed)
-                .forEach(CheckBoxElement::scriptClick);
+                .forEach(checkBox->checkBox.setCheck(true));
     }
 
     public void moveFromImportant() {

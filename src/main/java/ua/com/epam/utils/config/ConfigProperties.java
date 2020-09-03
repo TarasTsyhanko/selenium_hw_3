@@ -50,6 +50,10 @@ public class ConfigProperties {
         return PropertyFile.getProperty("letter_file_path");
     }
 
+    public static String getGmailCredentialsFilePath() {
+        return PropertyFile.getProperty("gmail_credentials_file_path");
+    }
+
     public static int getSizeOfMarkMessages() {
         return Integer.parseInt(PropertyFile.getProperty("size_of_mark_messages"));
     }

@@ -6,79 +6,74 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ua.com.epam.factory.DriverContainer;
 import ua.com.epam.factory.Wait;
+import ua.com.epam.pagefactory.WrapperFactory;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Log4j2
-public class PageElementList<T> implements PageElementCollection<T> {
+public class PageElementCollectionImpl<T> implements PageElementCollection<T> {
     private List<T> webElements;
     private final By locator;
     private final Class<T> tClass;
 
-    public PageElementList(By locator, Class<T> tClass) {
-        webElements = new ArrayList<>();
+    public PageElementCollectionImpl(By locator, Class<T> tClass) {
         this.locator = locator;
         this.tClass = tClass;
     }
 
-    private List<T> getElements() {
+    private List<T> refreshElements() {
         List<WebElement> list = DriverContainer.getDriver().findElements(locator);
-        List<T> pageElementList = new ArrayList<>();
+        addList(list);
+        return webElements;
+    }
 
-        list.forEach(el -> {
-            try {
-                pageElementList.add(tClass.getConstructor(WebElement.class, By.class)
-                        .newInstance(el, locator));
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-               log.error(e.getMessage());
-            }
-        });
-        return pageElementList;
+    public void addList(List<WebElement> elementList) {
+        webElements = new ArrayList<>();
+        elementList.forEach(element -> webElements.add(WrapperFactory.createInstance(tClass, element, null)));
     }
 
     @Override
     public <S> List<S> map(Function<? super T, ? extends S> mapper) {
-        return getElements().stream().map(mapper).collect(Collectors.toList());
+        return refreshElements().stream().map(mapper).collect(Collectors.toList());
     }
 
     @Override
     public T get(int index) {
-        return getElements().get(index);
+        return refreshElements().get(index);
     }
 
     @Override
     public List<T> getWithLimit(int limit) {
-        return getElements().stream().limit(limit).collect(Collectors.toList());
+        return refreshElements().stream().limit(limit).collect(Collectors.toList());
     }
 
     @Override
     public PageElementCollection<T> waitUntilVisible() {
-        Wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        addList(Wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator)));
         return this;
     }
 
     @Override
     public PageElementCollection<T> waitUntilPresent() {
-        Wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+        addList(Wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator)));
         return this;
     }
 
     @Override
     public int size() {
-        return getElements().size();
+        return refreshElements().size();
     }
 
     @Override
     public boolean isEmpty() {
-        return getElements().isEmpty();
+        return refreshElements().isEmpty();
     }
 
     @Override
     public boolean contains(Object o) {
-        return getElements().contains(o);
+        return refreshElements().contains(o);
     }
 
     @Override
@@ -87,7 +82,7 @@ public class PageElementList<T> implements PageElementCollection<T> {
     }
 
     private class PageElementIterator implements Iterator<T> {
-        Iterator<T> iterator = getElements().iterator();
+        Iterator<T> iterator = refreshElements().iterator();
 
         @Override
         public boolean hasNext() {
@@ -107,12 +102,12 @@ public class PageElementList<T> implements PageElementCollection<T> {
 
     @Override
     public Object[] toArray() {
-        return getElements().toArray();
+        return refreshElements().toArray();
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        return getElements().toArray(a);
+        return refreshElements().toArray(a);
     }
 
     @Override
@@ -122,31 +117,31 @@ public class PageElementList<T> implements PageElementCollection<T> {
 
     @Override
     public boolean remove(Object o) {
-        return getElements().remove(o);
+        return refreshElements().remove(o);
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return getElements().containsAll(c);
+        return refreshElements().containsAll(c);
     }
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return getElements().addAll(c);
+        return refreshElements().addAll(c);
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return getElements().removeAll(c);
+        return refreshElements().removeAll(c);
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return getElements().retainAll(c);
+        return refreshElements().retainAll(c);
     }
 
     @Override
     public void clear() {
-        getElements().clear();
+        refreshElements().clear();
     }
 }

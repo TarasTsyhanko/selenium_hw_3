@@ -1,4 +1,4 @@
-package ua.com.epam.custumpagefactory;
+package ua.com.epam.pagefactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
@@ -12,7 +12,7 @@ import org.openqa.selenium.support.pagefactory.Annotations;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import ua.com.epam.layers.elements.PageElement;
 import ua.com.epam.layers.elements.PageElementCollection;
-import ua.com.epam.layers.elements.PageElementList;
+import ua.com.epam.layers.elements.PageElementCollectionImpl;
 
 
 public class LocatingCustomElementListHandler implements InvocationHandler {
@@ -27,12 +27,10 @@ public class LocatingCustomElementListHandler implements InvocationHandler {
     }
 
     public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
-        List<WebElement> list = locator.findElements();
-
         By by = (new Annotations(field)).buildBy();
 
-        PageElementCollection<PageElement> customs = new PageElementList<>(by, clazz);
-        list.forEach(element -> customs.add(WrapperFactory.createInstance(clazz, element, field)));
+        PageElementCollection<PageElement> customs = new PageElementCollectionImpl<>(by, clazz);
+        customs.addList(locator.findElements());
         try {
             return method.invoke(customs, objects);
         } catch (InvocationTargetException | IllegalAccessException e) {

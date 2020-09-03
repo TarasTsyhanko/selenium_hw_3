@@ -1,4 +1,4 @@
-package ua.com.epam.custumpagefactory;
+package ua.com.epam.pagefactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;

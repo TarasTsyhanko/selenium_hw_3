@@ -12,24 +12,24 @@ public class InputElement extends PageElement {
     }
 
     public void sendKeys(CharSequence... keys) {
-        getWebElement().sendKeys(keys);
+        refreshElement().sendKeys(keys);
     }
 
     public void clearAndSendKeys(CharSequence... keys) {
-        getWebElement().clear();
-        getWebElement().sendKeys(keys);
+        refreshElement().clear();
+        refreshElement().sendKeys(keys);
     }
 
     public void clear() {
-        getWebElement().clear();
+        refreshElement().clear();
     }
 
     public void submit() {
-        getWebElement().submit();
+        refreshElement().submit();
     }
 
     public InputElement waitUntilVisible() {
-        Wait.until(ExpectedConditions.visibilityOf(getWebElement()));
+        Wait.until(ExpectedConditions.visibilityOf(refreshElement()));
         return this;
     }
 
@@ -41,9 +41,5 @@ public class InputElement extends PageElement {
     public InputElement waitUntilPresent() {
         webElement = Wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return this;
-    }
-
-    public boolean waitUntilStalenessOf() {
-        return Wait.until(ExpectedConditions.stalenessOf(webElement));
     }
 }

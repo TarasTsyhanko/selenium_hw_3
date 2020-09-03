@@ -10,7 +10,7 @@ import java.util.*;
 
 @Log4j2
 public class FileReader {
-    public static <T> List<T> readFile(String path, Class<T> tClass) {
+    public static <T> List<T> readListFile(String path, Class<T> tClass) {
         List<T> list = new ArrayList<>();
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -20,5 +20,15 @@ public class FileReader {
             log.error(e.getMessage());
         }
         return list;
+    }
+
+    public static <T> T readFile(String path, Class<T> tClass) {
+        T object =null;
+        try {
+            object = new ObjectMapper().readValue(new File(path), tClass);
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
+        return object;
     }
 }

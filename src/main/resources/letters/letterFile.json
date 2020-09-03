@@ -1,21 +1,17 @@
 [
   {
-    "recipient": "seleniumtsyhanko@gmail.com",
     "subject": "test letter1",
     "message": "hello world!"
   },
   {
-    "recipient": "seleniumtsyhanko@gmail.com",
     "subject": "test letter2",
     "message": "hello java"
   },
   {
-    "recipient": "seleniumtsyhanko@gmail.com",
     "subject": "test letter3",
     "message": "hello tester"
   },
   {
-    "recipient": "seleniumtsyhanko@gmail.com",
     "subject": "test letter4",
     "message": " hello QA"
   }
