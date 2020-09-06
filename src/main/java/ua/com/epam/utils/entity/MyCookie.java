@@ -7,9 +7,6 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.Date;
 
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class MyCookie{
     private String domain;

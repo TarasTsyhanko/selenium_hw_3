@@ -2,30 +2,30 @@ package ua.com.epam.factory;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ua.com.epam.utils.config.ConfigProperties;
-
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 
 @Log4j2
 public class DriverContainer {
 
-    private static WebDriver DRIVER;
+    private static final ThreadLocal<WebDriver> DRIVER_POOL = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
-        if (DRIVER == null) {
-           DRIVER = DriverFactory.createDriver(ConfigProperties.getBrowser());
+        if (DRIVER_POOL.get() == null) {
+            DRIVER_POOL.set(DriverFactory.createDriver(ConfigProperties.getBrowser()));
         }
-        return DRIVER;
+        return DRIVER_POOL.get();
     }
 
     public static void quitDriver() {
         log.info("try to quit driver");
-        if (DRIVER != null) {
-            DRIVER.quit();
-            DRIVER = null;
+        if (DRIVER_POOL.get() != null) {
+            DRIVER_POOL.get().quit();
+            DRIVER_POOL.set(null);
         }
         log.info("driver was successfully closed");
+    }
+
+    private DriverContainer() {
+
     }
 }

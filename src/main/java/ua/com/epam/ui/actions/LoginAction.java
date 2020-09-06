@@ -1,0 +1,27 @@
+package ua.com.epam.ui.actions;
+
+import com.google.inject.Inject;
+import io.qameta.allure.Step;
+import ua.com.epam.ui.pages.GmailBasePage;
+import ua.com.epam.ui.pages.GmailLoginPage;
+
+public class LoginAction {
+
+    @Inject
+    private GmailLoginPage loginPage;
+
+    @Inject
+    private GmailBasePage basePage;
+
+    @Step("log in to gmail account")
+    public void logInToGmailAccount(String login, String password) {
+        loginPage.inputLoginAndClickNext(login);
+        loginPage.inputPasswordAndClickNext(password);
+    }
+
+    @Step("get user full name")
+    public String getUserFullName() {
+        basePage.getUserIcon().waitUntilClickable().click();
+        return basePage.getUserName().getText();
+    }
+}

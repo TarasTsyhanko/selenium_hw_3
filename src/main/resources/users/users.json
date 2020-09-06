@@ -4,5 +4,29 @@
     "login": "besttesterever12@gmail.com",
     "password": "besttester20200828",
     "cookieFileName": "cookieUserTwo.json"
+  },
+  {
+    "fullName": "Test Base",
+    "login": "basetestjava@gmail.com",
+    "password": "baseTestjava1",
+    "cookieFileName": "cookieUserTree.json"
+  },
+  {
+    "fullName": "Java TestSimple",
+    "login": "javatestsimple@gmail.com",
+    "password": "javaScript1290",
+    "cookieFileName": "cookieUserFour.json"
+  },
+  {
+    "fullName": "Jonny Cucumber",
+    "login": "cucumberjonny@gmail.com",
+    "password": "jonnyCucu123ber",
+    "cookieFileName": "cookieUserFive.json"
+  },
+  {
+    "fullName": "Test5 LastTest",
+    "login": "lasttestt336@gmail.com",
+    "password": "lastTest54321",
+    "cookieFileName": "cookieUserSix.json"
   }
 ]

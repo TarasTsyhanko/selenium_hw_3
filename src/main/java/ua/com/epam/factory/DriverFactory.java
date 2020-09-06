@@ -35,4 +35,8 @@ public class DriverFactory {
     public static void setWait(WebDriver driver, int time) {
         driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
     }
+
+    private DriverFactory() {
+
+    }
 }

@@ -7,7 +7,9 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.Base64;
 import com.google.api.services.gmail.Gmail;
+import com.google.api.services.gmail.model.ListThreadsResponse;
 import com.google.api.services.gmail.model.Message;
+import com.google.api.services.gmail.model.Thread;
 import ua.com.epam.utils.entity.GmailCredentials;
 
 import javax.mail.MessagingException;
@@ -16,6 +18,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 public class GmailServiceImpl implements GmailService {
@@ -71,6 +74,7 @@ public class GmailServiceImpl implements GmailService {
     }
 
     private Credential authorize() {
+
         return new GoogleCredential.Builder()
                 .setTransport(httpTransport)
                 .setJsonFactory(JSON_FACTORY)

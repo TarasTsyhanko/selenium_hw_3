@@ -35,6 +35,11 @@ public class Wait {
                 .executeScript(SCRIPT_READY_STATE).toString().equals(COMPLETE));
     }
 
+    public static void untilPageToBeToBeRefreshed() {
+        DriverContainer.getDriver().navigate().refresh();
+        untilPageToBeLoaded();
+    }
+
     public static WebElement forVisible(WebElement element) {
         return until(ExpectedConditions.visibilityOf(element));
     }
