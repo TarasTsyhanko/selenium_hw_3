@@ -1,13 +1,10 @@
 package ua.com.epam.listener;
 
-
-import io.qameta.allure.Attachment;
-
 import lombok.extern.log4j.Log4j2;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import ua.com.epam.utils.AllureAttachment;
+import ua.com.epam.utils.allure.AllureAttachment;
 
 @Log4j2
 public class GmailTestListeners implements ITestListener {

@@ -40,31 +40,12 @@ public class Wait {
         untilPageToBeLoaded();
     }
 
-    public static WebElement forVisible(WebElement element) {
-        return until(ExpectedConditions.visibilityOf(element));
-    }
-
-    public static WebElement forClickable(WebElement element) {
-        return until(ExpectedConditions.elementToBeClickable(element));
-    }
-
-    public static WebElement forPresent(By locator) {
-        return until(ExpectedConditions.presenceOfElementLocated(locator));
-    }
-
-    public static List<WebElement> forPresentAll(By locator) {
-        return until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-    }
-
-    public static boolean forTextPresent(WebElement element, String text) {
-        return until(ExpectedConditions.textToBePresentInElement(element, text));
-    }
-
     public static boolean forUrlContains(String text) {
         return until(ExpectedConditions.urlContains(text));
     }
 
-    public static boolean forStalenessOf(WebElement element) {
-        return until(ExpectedConditions.stalenessOf(element));
+    public static boolean forUrlToRe(String url) {
+        return until(ExpectedConditions.urlToBe(url));
     }
+
 }

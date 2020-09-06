@@ -2,12 +2,13 @@ package ua.com.epam.ui.actions;
 
 import com.google.inject.Inject;
 import io.qameta.allure.Step;
-import ua.com.epam.factory.DriverContainer;
+import ua.com.epam.decorator.elements.PageElementCollection;
+import ua.com.epam.decorator.elements.elementimpl.CheckBoxElement;
 import ua.com.epam.factory.Wait;
 import ua.com.epam.ui.pages.GmailBasePage;
 import ua.com.epam.ui.pages.GmailImportantLettersPage;
 
-import static ua.com.epam.utils.constant.LocatorConstants.IMPORTANT_LIST_URL_CONTAINS;
+import static ua.com.epam.utils.constant.URLConstants.IMPORTANT_LIST_URL_CONTAINS;
 
 public class ImportantLettersAction {
     @Inject
@@ -17,9 +18,10 @@ public class ImportantLettersAction {
 
     @Step("move [{n}] letters to important list")
     public void moveNLettersToImportantList(int n) {
-        basePage.getListLettersCheckBox().waitUntilPresent()
-                .getWithLimit(n)
-                .forEach(checkBox -> checkBox.setCheck(true));
+        PageElementCollection<CheckBoxElement> checkBoxes = basePage.getListLettersCheckBox().waitUntilPresent();
+        for (int i = 0; i < n; i++) {
+            checkBoxes.get(i).setCheck(true);
+        }
         basePage.getLetterActionButton().actionClick();
         basePage.getMarkAsImportant().actionClick();
     }
@@ -30,23 +32,12 @@ public class ImportantLettersAction {
         basePage.getImportantLettersButton().waitUntilClickable().click();
     }
 
-    @Step("mark important letters")
-    public void markAllImportantLetters() {
+    @Step("clear important letter list")
+    public void clearImportantLetterList() {
         Wait.forUrlContains(IMPORTANT_LIST_URL_CONTAINS);
         importantLettersPage.getImportantLettersCheckBox()
                 .waitUntilPresent()
                 .forEach(checkBox -> checkBox.setCheck(true));
-    }
-
-    @Step("wait until letters to be loaded ")
-    public void waitUntilLettersTobeLoaded(int numberOfLetters){
-        while (basePage.getListLettersCheckBox().size()!=numberOfLetters){
-            Wait.untilPageToBeToBeRefreshed();
-        }
-    }
-
-    @Step("delete letters")
-    public void deleteMarkedLetters() {
         importantLettersPage.getDeleteAction().click();
     }
 

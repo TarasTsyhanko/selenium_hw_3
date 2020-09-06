@@ -10,6 +10,7 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.ListThreadsResponse;
 import com.google.api.services.gmail.model.Message;
 import com.google.api.services.gmail.model.Thread;
+import lombok.extern.log4j.Log4j2;
 import ua.com.epam.utils.entity.GmailCredentials;
 
 import javax.mail.MessagingException;
@@ -21,39 +22,60 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+@Log4j2
 public class GmailServiceImpl implements GmailService {
     private static final String APPLICATION_NAME = "Mail";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private final HttpTransport httpTransport;
     private GmailCredentials gmailCredentials;
+    private String email;
 
     public GmailServiceImpl(HttpTransport httpTransport) {
         this.httpTransport = httpTransport;
     }
 
     @Override
-    public void setGmailCredentials(GmailCredentials gmailCredentials) {
+    public void setGmailCredentials(GmailCredentials gmailCredentials, String email) {
         this.gmailCredentials = gmailCredentials;
+        this.email = email;
     }
 
     @Override
     public boolean sendMessage(String recipient, String subject, String body) throws MessagingException,
             IOException {
+        log.info(" send email[" + recipient + " : " + subject + " : " + body + "]");
         Message message = createMessageWithEmail(
-                createEmail(recipient, gmailCredentials.getUserEmail(), subject, body));
+                createEmail(recipient, email, subject, body));
 
         return createGmail().users()
                 .messages()
-                .send(gmailCredentials.getUserEmail(), message)
+                .send(email, message)
                 .execute()
                 .getLabelIds().contains("SENT");
     }
 
     private Gmail createGmail() {
+        log.info("create Gmail API connection");
         Credential credential = authorize();
         return new Gmail.Builder(httpTransport, JSON_FACTORY, credential)
                 .setApplicationName(APPLICATION_NAME)
                 .build();
+    }
+
+    public void deleteMessage(String email) throws IOException {
+        log.info(" clear gmail user's : " + email);
+        Gmail gmail = createGmail();
+        ListThreadsResponse threadsResponse = gmail.users().threads().list(email).execute();
+        if (threadsResponse.getThreads() != null) {
+            List<Thread> threads = threadsResponse.getThreads();
+            threads.forEach(thread -> {
+                try {
+                    gmail.users().threads().delete(email, thread.getId()).execute();
+                } catch (IOException e) {
+                    log.error(e.getMessage());
+                }
+            });
+        }
     }
 
     private MimeMessage createEmail(String to, String from, String subject, String bodyText) throws MessagingException {
@@ -74,7 +96,6 @@ public class GmailServiceImpl implements GmailService {
     }
 
     private Credential authorize() {
-
         return new GoogleCredential.Builder()
                 .setTransport(httpTransport)
                 .setJsonFactory(JSON_FACTORY)

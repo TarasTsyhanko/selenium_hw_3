@@ -12,24 +12,24 @@ public class InputElement extends PageElement {
     }
 
     public void sendKeys(CharSequence... keys) {
-        refreshElement().sendKeys(keys);
+        getElement().sendKeys(keys);
     }
 
     public void clearAndSendKeys(CharSequence... keys) {
-        refreshElement().clear();
-        refreshElement().sendKeys(keys);
+        getElement().clear();
+        getElement().sendKeys(keys);
     }
 
     public void clear() {
-        refreshElement().clear();
+        getElement().clear();
     }
 
     public void submit() {
-        refreshElement().submit();
+        getElement().submit();
     }
 
     public InputElement waitUntilVisible() {
-        Wait.until(ExpectedConditions.visibilityOf(refreshElement()));
+        Wait.until(ExpectedConditions.visibilityOf(getElement()));
         return this;
     }
 

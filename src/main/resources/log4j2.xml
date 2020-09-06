@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info">
     <Appenders>
-        <RandomAccessFile name="RandomAccessFile" fileName="src/test/resources/logsParall/async.log" immediateFlush="false" append="false">
+        <RandomAccessFile name="RandomAccessFile" fileName="src/test/resources/logs/all.log" immediateFlush="false" append="false">
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
             </PatternLayout>
         </RandomAccessFile>
         <Console name="Console" target="system_out">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} [%-5level]  %class{1}:%L - %msg %xEx{short}%n"/>
+            <PatternLayout pattern="%highlight%d{yyy-MM-dd HH:mm:ss} [%-5level]  %class{1}:%L - %msg %xEx{short}%n"/>
         </Console>
-        <File name="logfile" fileName="src/test/resources/logs/all.log" immediateFlush="false" append="false">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} [%-5level] %class{1}:%L - %msg%n"/>
-        </File>
     </Appenders>
     <Loggers>
         <Root level="info">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="logfile"/>
+            <AppenderRef ref="async"/>
             <AppenderRef ref="RandomAccessFile"/>
         </Root>
     </Loggers>

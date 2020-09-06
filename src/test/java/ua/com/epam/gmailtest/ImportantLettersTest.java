@@ -8,8 +8,9 @@ import ua.com.epam.asserters.ImportantLetterAsserter;
 import ua.com.epam.ui.actions.ImportantLettersAction;
 import ua.com.epam.ui.actions.LoginAction;
 import ua.com.epam.utils.config.ConfigProperties;
+import ua.com.epam.utils.constant.URLConstants;
 import ua.com.epam.utils.entity.User;
-import ua.com.epam.utils.readers.FileManager;
+import ua.com.epam.utils.FileManager;
 
 import static ua.com.epam.utils.constant.MessageConstant.*;
 
@@ -24,14 +25,14 @@ public class ImportantLettersTest extends BaseTest {
     @Test(description = "mark messages like important and delete it ", dataProvider = "users")
     public void markMessagesLikeImportant(User user) {
         loginAction.logInToGmailAccount(user.getLogin(), user.getPassword());
+        Assert.assertTrue(loginAction.isBasePage(URLConstants.BASE_PAGE_URL));
 
         importantListAction.moveNLettersToImportantList(ConfigProperties.getSizeOfMarkMessages());
         Assert.assertTrue(importantListAction.isDisplayedMessage());
         letterAsserter.assertMessage(importantListAction.getMessageText(), SUCCESSFUL_MOVING_MESSAGE);
 
         importantListAction.openImportantLetterList();
-        importantListAction.markAllImportantLetters();
-        importantListAction.deleteMarkedLetters();
+        importantListAction.clearImportantLetterList();
         Assert.assertTrue(importantListAction.isDisplayedMessage());
         letterAsserter.assertMessage(importantListAction.getMessageText(), SUCCESSFUL_DELETION_MESSAGE);
     }

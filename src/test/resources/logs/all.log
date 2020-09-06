@@ -1,32 +1,72 @@
-2020-09-06 19:57:41 [INFO ] GmailTestListeners:21 - I am in onStart method Gmail
-2020-09-06 19:57:51 [INFO ] DriverFactory:18 - try to create driver chrome
-2020-09-06 19:57:51 [INFO ] DriverFactory:18 - try to create driver chrome
-2020-09-06 19:57:51 [INFO ] DriverFactory:18 - try to create driver chrome
-2020-09-06 19:58:14 [INFO ] DriverFactory:31 - chrome driver was successfully created
-2020-09-06 19:58:14 [INFO ] DriverFactory:31 - chrome driver was successfully created
-2020-09-06 19:58:14 [INFO ] DriverFactory:31 - chrome driver was successfully created
-2020-09-06 19:58:24 [INFO ] GmailTestListeners:31 - I am in onTestStart method markMessagesLikeImportant start
-2020-09-06 19:58:24 [INFO ] GmailTestListeners:31 - I am in onTestStart method markMessagesLikeImportant start
-2020-09-06 19:58:24 [INFO ] GmailTestListeners:31 - I am in onTestStart method markMessagesLikeImportant start
-2020-09-06 19:58:54 [INFO ] GmailTestListeners:42 - saved screenshot
-2020-09-06 19:58:55 [INFO ] DriverContainer:20 - try to quit driver
-2020-09-06 19:59:14 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method markMessagesLikeImportant succeed
-2020-09-06 19:59:14 [INFO ] DriverContainer:20 - try to quit driver
-2020-09-06 19:59:16 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method markMessagesLikeImportant succeed
-2020-09-06 19:59:16 [INFO ] DriverContainer:20 - try to quit driver
-2020-09-06 19:59:18 [INFO ] DriverContainer:25 - driver was successfully closed
-2020-09-06 19:59:18 [INFO ] DriverContainer:25 - driver was successfully closed
-2020-09-06 19:59:19 [INFO ] DriverContainer:25 - driver was successfully closed
-2020-09-06 19:59:21 [INFO ] DriverFactory:18 - try to create driver chrome
-2020-09-06 19:59:21 [INFO ] DriverFactory:18 - try to create driver chrome
-2020-09-06 19:59:30 [INFO ] DriverFactory:31 - chrome driver was successfully created
-2020-09-06 19:59:30 [INFO ] DriverFactory:31 - chrome driver was successfully created
-2020-09-06 19:59:35 [INFO ] GmailTestListeners:31 - I am in onTestStart method markMessagesLikeImportant start
-2020-09-06 19:59:36 [INFO ] GmailTestListeners:31 - I am in onTestStart method markMessagesLikeImportant start
-2020-09-06 20:00:11 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method markMessagesLikeImportant succeed
-2020-09-06 20:00:11 [INFO ] DriverContainer:20 - try to quit driver
-2020-09-06 20:00:12 [INFO ] GmailTestListeners:36 - I am in onTestSuccess method markMessagesLikeImportant succeed
-2020-09-06 20:00:12 [INFO ] DriverContainer:20 - try to quit driver
-2020-09-06 20:00:16 [INFO ] DriverContainer:25 - driver was successfully closed
-2020-09-06 20:00:16 [INFO ] DriverContainer:25 - driver was successfully closed
-2020-09-06 20:00:16 [INFO ] GmailTestListeners:26 - I am in onFinish method Gmail
+2020-09-07 01:54:07,677 INFO u.c.e.l.GmailTestListeners [main] I am in onStart method GmailTest 
+2020-09-07 01:54:08,767 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0]  send email[besttesterever12@gmail.com : test letter1 : hello world!] 
+2020-09-07 01:54:08,773 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-1]  send email[basetestjava@gmail.com : test letter1 : hello world!] 
+2020-09-07 01:54:08,807 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2]  send email[javatestsimple@gmail.com : test letter1 : hello world!] 
+2020-09-07 01:54:09,073 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0] create Gmail API connection 
+2020-09-07 01:54:09,075 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-1] create Gmail API connection 
+2020-09-07 01:54:09,084 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2] create Gmail API connection 
+2020-09-07 01:54:11,591 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-1]  send email[basetestjava@gmail.com : test letter2 : hello java] 
+2020-09-07 01:54:11,593 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-1] create Gmail API connection 
+2020-09-07 01:54:11,883 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2]  send email[javatestsimple@gmail.com : test letter2 : hello java] 
+2020-09-07 01:54:11,885 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2] create Gmail API connection 
+2020-09-07 01:54:12,030 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0]  send email[besttesterever12@gmail.com : test letter2 : hello java] 
+2020-09-07 01:54:12,032 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0] create Gmail API connection 
+2020-09-07 01:54:12,454 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-1]  send email[basetestjava@gmail.com : test letter3 : hello tester] 
+2020-09-07 01:54:12,456 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-1] create Gmail API connection 
+2020-09-07 01:54:12,752 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2]  send email[javatestsimple@gmail.com : test letter3 : hello tester] 
+2020-09-07 01:54:12,754 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2] create Gmail API connection 
+2020-09-07 01:54:12,907 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0]  send email[besttesterever12@gmail.com : test letter3 : hello tester] 
+2020-09-07 01:54:12,908 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0] create Gmail API connection 
+2020-09-07 01:54:13,338 INFO u.c.e.f.DriverFactory [TestNG-PoolService-1] try to create driver chrome 
+2020-09-07 01:54:13,756 INFO u.c.e.f.DriverFactory [TestNG-PoolService-2] try to create driver chrome 
+2020-09-07 01:54:13,785 INFO u.c.e.f.DriverFactory [TestNG-PoolService-0] try to create driver chrome 
+2020-09-07 01:54:29,821 INFO u.c.e.f.DriverFactory [TestNG-PoolService-2] chrome driver was successfully created 
+2020-09-07 01:54:32,406 INFO u.c.e.f.DriverFactory [TestNG-PoolService-0] chrome driver was successfully created 
+2020-09-07 01:54:32,425 INFO u.c.e.f.DriverFactory [TestNG-PoolService-1] chrome driver was successfully created 
+2020-09-07 01:54:41,605 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-1] I am in onTestStart method markMessagesLikeImportant start 
+2020-09-07 01:54:41,670 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-0] I am in onTestStart method markMessagesLikeImportant start 
+2020-09-07 01:54:47,542 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-2] I am in onTestStart method markMessagesLikeImportant start 
+2020-09-07 01:55:34,715 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-0] saved screenshot 
+2020-09-07 01:55:34,949 INFO u.c.e.f.DriverContainer [TestNG-PoolService-0] try to quit driver 
+2020-09-07 01:55:46,692 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-2] I am in onTestSuccess method markMessagesLikeImportant succeed 
+2020-09-07 01:55:46,723 INFO u.c.e.f.DriverContainer [TestNG-PoolService-2] try to quit driver 
+2020-09-07 01:55:48,246 INFO u.c.e.f.DriverContainer [TestNG-PoolService-0] driver was successfully closed 
+2020-09-07 01:55:48,254 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0]  clear gmail user's : besttesterever12@gmail.com 
+2020-09-07 01:55:48,255 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0] create Gmail API connection 
+2020-09-07 01:55:48,338 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-1] saved screenshot 
+2020-09-07 01:55:48,372 INFO u.c.e.f.DriverContainer [TestNG-PoolService-1] try to quit driver 
+2020-09-07 01:55:49,212 INFO u.c.e.f.DriverContainer [TestNG-PoolService-2] driver was successfully closed 
+2020-09-07 01:55:49,214 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2]  clear gmail user's : javatestsimple@gmail.com 
+2020-09-07 01:55:49,215 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2] create Gmail API connection 
+2020-09-07 01:55:49,861 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2]  send email[cucumberjonny@gmail.com : test letter1 : hello world!] 
+2020-09-07 01:55:49,871 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2] create Gmail API connection 
+2020-09-07 01:55:50,508 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2]  send email[cucumberjonny@gmail.com : test letter2 : hello java] 
+2020-09-07 01:55:50,511 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2] create Gmail API connection 
+2020-09-07 01:55:50,708 INFO u.c.e.f.DriverContainer [TestNG-PoolService-1] driver was successfully closed 
+2020-09-07 01:55:50,709 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-1]  clear gmail user's : basetestjava@gmail.com 
+2020-09-07 01:55:50,710 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-1] create Gmail API connection 
+2020-09-07 01:55:50,787 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0]  send email[lasttestt336@gmail.com : test letter1 : hello world!] 
+2020-09-07 01:55:50,789 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0] create Gmail API connection 
+2020-09-07 01:55:51,039 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2]  send email[cucumberjonny@gmail.com : test letter3 : hello tester] 
+2020-09-07 01:55:51,041 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2] create Gmail API connection 
+2020-09-07 01:55:51,655 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0]  send email[lasttestt336@gmail.com : test letter2 : hello java] 
+2020-09-07 01:55:51,665 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0] create Gmail API connection 
+2020-09-07 01:55:51,808 INFO u.c.e.f.DriverFactory [TestNG-PoolService-2] try to create driver chrome 
+2020-09-07 01:55:52,268 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0]  send email[lasttestt336@gmail.com : test letter3 : hello tester] 
+2020-09-07 01:55:52,271 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0] create Gmail API connection 
+2020-09-07 01:55:52,864 INFO u.c.e.f.DriverFactory [TestNG-PoolService-0] try to create driver chrome 
+2020-09-07 01:55:59,711 INFO u.c.e.f.DriverFactory [TestNG-PoolService-2] chrome driver was successfully created 
+2020-09-07 01:56:00,056 INFO u.c.e.f.DriverFactory [TestNG-PoolService-0] chrome driver was successfully created 
+2020-09-07 01:56:03,633 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-2] I am in onTestStart method markMessagesLikeImportant start 
+2020-09-07 01:56:06,066 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-0] I am in onTestStart method markMessagesLikeImportant start 
+2020-09-07 01:56:33,701 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-2] saved screenshot 
+2020-09-07 01:56:33,737 INFO u.c.e.f.DriverContainer [TestNG-PoolService-2] try to quit driver 
+2020-09-07 01:56:36,130 INFO u.c.e.f.DriverContainer [TestNG-PoolService-2] driver was successfully closed 
+2020-09-07 01:56:36,133 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2]  clear gmail user's : cucumberjonny@gmail.com 
+2020-09-07 01:56:36,144 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-2] create Gmail API connection 
+2020-09-07 01:56:45,728 INFO u.c.e.l.GmailTestListeners [TestNG-PoolService-0] saved screenshot 
+2020-09-07 01:56:45,738 INFO u.c.e.f.DriverContainer [TestNG-PoolService-0] try to quit driver 
+2020-09-07 01:56:46,760 INFO u.c.e.f.DriverContainer [TestNG-PoolService-0] driver was successfully closed 
+2020-09-07 01:56:46,766 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0]  clear gmail user's : lasttestt336@gmail.com 
+2020-09-07 01:56:46,767 INFO u.c.e.a.s.GmailServiceImpl [TestNG-PoolService-0] create Gmail API connection 
+2020-09-07 01:56:48,132 INFO u.c.e.l.GmailTestListeners [main] I am in onFinish method GmailTest 

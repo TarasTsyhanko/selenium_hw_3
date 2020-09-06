@@ -16,7 +16,7 @@ public class ButtonElement extends PageElement {
     }
 
     public void click() {
-        refreshElement().click();
+        getElement().click();
     }
 
     public void scriptClick() {

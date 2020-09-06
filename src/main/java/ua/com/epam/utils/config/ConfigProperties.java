@@ -38,10 +38,6 @@ public class ConfigProperties {
         return PropertyFile.getProperty("users_file_path");
     }
 
-    public static String getCookieDirectoryPath() {
-        return PropertyFile.getProperty("cookie_directory_path");
-    }
-
     public static String getLogsFilePath() {
         return PropertyFile.getProperty("logs_file_path");
     }
@@ -50,8 +46,8 @@ public class ConfigProperties {
         return PropertyFile.getProperty("letter_file_path");
     }
 
-    public static String getGmailCredentialsFilePath() {
-        return PropertyFile.getProperty("gmail_credentials_file_path");
+    public static String getUserApiFilePath() {
+        return PropertyFile.getProperty("user_api_file_path");
     }
 
     public static int getSizeOfMarkMessages() {

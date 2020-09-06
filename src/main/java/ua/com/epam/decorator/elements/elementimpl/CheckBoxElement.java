@@ -15,6 +15,6 @@ public class CheckBoxElement extends ButtonElement {
     }
 
     public boolean isSelected() {
-        return refreshElement().isSelected();
+        return getElement().isSelected();
     }
 }

@@ -23,7 +23,7 @@ public class PageElementCollectionImpl<T> implements PageElementCollection<T> {
         this.tClass = tClass;
     }
 
-    private List<T> refreshElements() {
+    private List<T> getElements() {
         List<WebElement> list = DriverContainer.getDriver().findElements(locator);
         addList(list);
         return webElements;
@@ -36,17 +36,17 @@ public class PageElementCollectionImpl<T> implements PageElementCollection<T> {
 
     @Override
     public <S> List<S> map(Function<? super T, ? extends S> mapper) {
-        return refreshElements().stream().map(mapper).collect(Collectors.toList());
+        return getElements().stream().map(mapper).collect(Collectors.toList());
     }
 
     @Override
     public T get(int index) {
-        return refreshElements().get(index);
+        return getElements().get(index);
     }
 
     @Override
     public List<T> getWithLimit(int limit) {
-        return refreshElements().stream().limit(limit).collect(Collectors.toList());
+        return getElements().stream().limit(limit).collect(Collectors.toList());
     }
 
     @Override
@@ -63,17 +63,17 @@ public class PageElementCollectionImpl<T> implements PageElementCollection<T> {
 
     @Override
     public int size() {
-        return refreshElements().size();
+        return getElements().size();
     }
 
     @Override
     public boolean isEmpty() {
-        return refreshElements().isEmpty();
+        return getElements().isEmpty();
     }
 
     @Override
     public boolean contains(Object o) {
-        return refreshElements().contains(o);
+        return getElements().contains(o);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class PageElementCollectionImpl<T> implements PageElementCollection<T> {
     }
 
     private class PageElementIterator implements Iterator<T> {
-        Iterator<T> iterator = refreshElements().iterator();
+        Iterator<T> iterator = getElements().iterator();
 
         @Override
         public boolean hasNext() {
@@ -102,12 +102,12 @@ public class PageElementCollectionImpl<T> implements PageElementCollection<T> {
 
     @Override
     public Object[] toArray() {
-        return refreshElements().toArray();
+        return getElements().toArray();
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        return refreshElements().toArray(a);
+        return getElements().toArray(a);
     }
 
     @Override
@@ -117,31 +117,31 @@ public class PageElementCollectionImpl<T> implements PageElementCollection<T> {
 
     @Override
     public boolean remove(Object o) {
-        return refreshElements().remove(o);
+        return getElements().remove(o);
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return refreshElements().containsAll(c);
+        return getElements().containsAll(c);
     }
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return refreshElements().addAll(c);
+        return getElements().addAll(c);
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return refreshElements().removeAll(c);
+        return getElements().removeAll(c);
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return refreshElements().retainAll(c);
+        return getElements().retainAll(c);
     }
 
     @Override
     public void clear() {
-        refreshElements().clear();
+        getElements().clear();
     }
 }

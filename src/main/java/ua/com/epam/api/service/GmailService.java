@@ -6,7 +6,9 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 
 public interface GmailService {
-    void setGmailCredentials(GmailCredentials gmailCredentials);
+    void setGmailCredentials(GmailCredentials gmailCredentials, String email);
 
     boolean sendMessage(String recipient, String subject, String body) throws MessagingException, IOException;
+
+    void deleteMessage( String email) throws IOException;
 }
