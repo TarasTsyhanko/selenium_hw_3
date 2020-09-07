@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ua.com.epam.decorator.elements.PageElement;
-import ua.com.epam.factory.Wait;
+import ua.com.epam.utils.Wait;
 
 public class InputElement extends PageElement {
     public InputElement(WebElement element, By by) {
@@ -29,7 +29,7 @@ public class InputElement extends PageElement {
     }
 
     public InputElement waitUntilVisible() {
-        Wait.until(ExpectedConditions.visibilityOf(getElement()));
+        Wait.until(ExpectedConditions.visibilityOf(webElement));
         return this;
     }
 

@@ -10,7 +10,7 @@ public class CheckBoxElement extends ButtonElement {
 
     public void setCheck(boolean value) {
         if (value != isSelected()) {
-            actionClick();
+            click();
         }
     }
 

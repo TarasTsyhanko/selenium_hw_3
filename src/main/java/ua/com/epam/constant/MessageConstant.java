@@ -1,6 +1,6 @@
-package ua.com.epam.utils.constant;
+package ua.com.epam.constant;
 
-import ua.com.epam.utils.config.ConfigProperties;
+import ua.com.epam.config.ConfigProperties;
 
 public class MessageConstant {
     public static final String SUCCESSFUL_DELETION_MESSAGE = String
@@ -10,6 +10,5 @@ public class MessageConstant {
     public static final String SUCCESSFUL_SENDING_MESSAGE = "Лист надіслано.";
 
     private MessageConstant() {
-
     }
 }

@@ -4,13 +4,13 @@ import com.google.inject.Inject;
 import org.testng.annotations.*;
 import ua.com.epam.factory.DriverContainer;
 import ua.com.epam.guice.GmailApiModule;
-import ua.com.epam.api.service.GmailClient;
+import ua.com.epam.api.GmailClient;
 import ua.com.epam.listener.GmailTestListeners;
 import ua.com.epam.guice.ActionModule;
 import ua.com.epam.guice.AsserterModule;
 import ua.com.epam.guice.PageModule;
 import ua.com.epam.utils.allure.AllureAttachment;
-import ua.com.epam.utils.config.ConfigProperties;
+import ua.com.epam.config.ConfigProperties;
 import ua.com.epam.utils.entity.User;
 import ua.com.epam.utils.FileManager;
 

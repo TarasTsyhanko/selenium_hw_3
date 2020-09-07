@@ -5,9 +5,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ua.com.epam.factory.DriverContainer;
-import ua.com.epam.factory.Wait;
+import ua.com.epam.utils.Wait;
 
-import static ua.com.epam.utils.constant.ScriptConstants.SCRIPT_SCROLL_TO_ELEMENT;
+import static ua.com.epam.constant.ScriptConstants.SCRIPT_SCROLL_TO_ELEMENT;
 
 public abstract class PageElement {
     protected WebElement webElement;
@@ -99,5 +99,9 @@ public abstract class PageElement {
 
     public boolean waitUntilTextPresent(String text) {
         return Wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
+    }
+
+    public boolean waitUntilAttributeToBe(String attribute, String value) {
+        return Wait.until(ExpectedConditions.attributeToBe(webElement, attribute, value));
     }
 }

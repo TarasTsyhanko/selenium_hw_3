@@ -2,8 +2,7 @@ package ua.com.epam.ui.actions;
 
 import com.google.inject.Inject;
 import io.qameta.allure.Step;
-import ua.com.epam.factory.DriverContainer;
-import ua.com.epam.factory.Wait;
+import ua.com.epam.utils.Wait;
 import ua.com.epam.ui.pages.GmailBasePage;
 import ua.com.epam.ui.pages.GmailLoginPage;
 

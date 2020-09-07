@@ -14,7 +14,7 @@ public class GmailBasePage extends AbstractPage {
     @FindBy(css = "div.gb_ub.gb_vb")
     private LabelElement userFullName;
 
-    @FindBy(xpath = "//div[@role='checkbox']")
+    @FindBy(xpath = "//table[@role='grid']//div[@role='checkbox']")
     private PageElementCollection<CheckBoxElement> listLettersCheckBox;
 
     @FindBy(css = "span.asa.bjy")

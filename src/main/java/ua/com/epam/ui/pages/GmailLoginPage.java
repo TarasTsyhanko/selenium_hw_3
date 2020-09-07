@@ -18,7 +18,7 @@ public class GmailLoginPage extends AbstractPage {
     }
 
     public void inputPasswordAndClickNext(String password) {
-        passwordInput.waitUntilPresent().sendKeys(password);
+        passwordInput.waitUntilVisible().sendKeys(password);
         nextButton.actionClick();
     }
 }

@@ -1,7 +1,7 @@
 package ua.com.epam.guice;
 
 import com.google.inject.AbstractModule;
-import ua.com.epam.api.service.GmailClient;
+import ua.com.epam.api.GmailClient;
 import ua.com.epam.ui.actions.ImportantLettersAction;
 import ua.com.epam.ui.actions.LoginAction;
 

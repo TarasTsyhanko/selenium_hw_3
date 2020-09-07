@@ -2,7 +2,7 @@ package ua.com.epam.factory;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
-import ua.com.epam.utils.config.ConfigProperties;
+import ua.com.epam.config.ConfigProperties;
 
 @Log4j2
 public class DriverContainer {

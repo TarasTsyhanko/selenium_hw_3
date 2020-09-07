@@ -7,13 +7,12 @@
             </PatternLayout>
         </RandomAccessFile>
         <Console name="Console" target="system_out">
-            <PatternLayout pattern="%highlight%d{yyy-MM-dd HH:mm:ss} [%-5level]  %class{1}:%L - %msg %xEx{short}%n"/>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} [%-5level]  %class{1}:%L - %msg %xEx{short}%n"/>
         </Console>
     </Appenders>
     <Loggers>
         <Root level="info">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="async"/>
             <AppenderRef ref="RandomAccessFile"/>
         </Root>
     </Loggers>

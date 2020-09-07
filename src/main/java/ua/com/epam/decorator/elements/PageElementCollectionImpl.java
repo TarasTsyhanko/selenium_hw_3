@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ua.com.epam.factory.DriverContainer;
-import ua.com.epam.factory.Wait;
+import ua.com.epam.utils.Wait;
 import ua.com.epam.decorator.WrapperFactory;
 
 import java.util.*;

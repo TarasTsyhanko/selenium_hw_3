@@ -35,7 +35,7 @@ public class GmailServiceImpl implements GmailService {
     }
 
     @Override
-    public void setGmailCredentials(GmailCredentials gmailCredentials, String email) {
+    public synchronized void setGmailCredentials(GmailCredentials gmailCredentials, String email) {
         this.gmailCredentials = gmailCredentials;
         this.email = email;
     }
@@ -62,7 +62,7 @@ public class GmailServiceImpl implements GmailService {
                 .build();
     }
 
-    public void deleteMessage(String email) throws IOException {
+    public synchronized void deleteMessage(String email) throws IOException {
         log.info(" clear gmail user's : " + email);
         Gmail gmail = createGmail();
         ListThreadsResponse threadsResponse = gmail.users().threads().list(email).execute();
@@ -95,7 +95,7 @@ public class GmailServiceImpl implements GmailService {
                 .setRaw(Base64.encodeBase64URLSafeString(buffer.toByteArray()));
     }
 
-    private Credential authorize() {
+    private synchronized Credential authorize() {
         return new GoogleCredential.Builder()
                 .setTransport(httpTransport)
                 .setJsonFactory(JSON_FACTORY)

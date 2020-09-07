@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 import ua.com.epam.asserters.ImportantLetterAsserter;
 import ua.com.epam.ui.actions.ImportantLettersAction;
 import ua.com.epam.ui.actions.LoginAction;
-import ua.com.epam.utils.config.ConfigProperties;
-import ua.com.epam.utils.constant.URLConstants;
+import ua.com.epam.config.ConfigProperties;
+import ua.com.epam.constant.URLConstants;
 import ua.com.epam.utils.entity.User;
 import ua.com.epam.utils.FileManager;
 
-import static ua.com.epam.utils.constant.MessageConstant.*;
+import static ua.com.epam.constant.MessageConstant.*;
 
 public class ImportantLettersTest extends BaseTest {
     @Inject
@@ -27,12 +27,13 @@ public class ImportantLettersTest extends BaseTest {
         loginAction.logInToGmailAccount(user.getLogin(), user.getPassword());
         Assert.assertTrue(loginAction.isBasePage(URLConstants.BASE_PAGE_URL));
 
+        importantListAction.waitLetterToBeLoaded(ConfigProperties.getSizeOfMarkMessages());
         importantListAction.moveNLettersToImportantList(ConfigProperties.getSizeOfMarkMessages());
         Assert.assertTrue(importantListAction.isDisplayedMessage());
         letterAsserter.assertMessage(importantListAction.getMessageText(), SUCCESSFUL_MOVING_MESSAGE);
 
         importantListAction.openImportantLetterList();
-        importantListAction.clearImportantLetterList();
+        importantListAction.clearImportantLetterList(ConfigProperties.getSizeOfMarkMessages());
         Assert.assertTrue(importantListAction.isDisplayedMessage());
         letterAsserter.assertMessage(importantListAction.getMessageText(), SUCCESSFUL_DELETION_MESSAGE);
     }

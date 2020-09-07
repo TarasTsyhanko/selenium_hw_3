@@ -1,4 +1,4 @@
-package ua.com.epam.utils.config;
+package ua.com.epam.config;
 
 import lombok.extern.log4j.Log4j2;
 

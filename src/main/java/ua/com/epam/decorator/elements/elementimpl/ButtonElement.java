@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ua.com.epam.decorator.elements.PageElement;
 import ua.com.epam.factory.DriverContainer;
-import ua.com.epam.factory.Wait;
+import ua.com.epam.utils.Wait;
 
-import static ua.com.epam.utils.constant.ScriptConstants.SCRIPT_CLICK;
+import static ua.com.epam.constant.ScriptConstants.SCRIPT_CLICK;
 
 public class ButtonElement extends PageElement {
     public ButtonElement(WebElement element, By by) {

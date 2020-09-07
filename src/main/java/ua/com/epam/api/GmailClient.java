@@ -1,6 +1,5 @@
-package ua.com.epam.api.service;
+package ua.com.epam.api;
 
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.inject.Inject;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -20,7 +19,7 @@ public class GmailClient {
     private GmailService gmailService;
 
     @Step("create test letter")
-    public void setTestLetters(List<Letter> letters, User recipient) {
+    public synchronized void setTestLetters(List<Letter> letters, User recipient) {
         User user = FileManager.getUserAPI();
         gmailService.setGmailCredentials(user.getGmailCredentials(), user.getLogin());
         letters.forEach(letter -> {
@@ -33,7 +32,7 @@ public class GmailClient {
     }
 
     @Step("cleat gmail api")
-    public void clearGmailApi(User user) throws IOException {
+    public synchronized void clearGmailApi(User user) throws IOException {
         gmailService.setGmailCredentials(user.getGmailCredentials(), user.getLogin());
             gmailService.deleteMessage(user.getLogin());
     }

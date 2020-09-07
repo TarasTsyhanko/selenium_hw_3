@@ -1,4 +1,4 @@
-package ua.com.epam.utils.config;
+package ua.com.epam.config;
 
 public class ConfigProperties {
     public static String getBaseUrl() {
